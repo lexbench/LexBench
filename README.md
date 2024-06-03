@@ -1,6 +1,28 @@
 # LexBench
 
-The official repository of the research project ``Revisiting a Pain in the Neck: Semantic Phrase Processing Benchmark for Language Models''.
+The repository of the research project ``Revisiting a Pain in the Neck: Semantic Phrase Processing Benchmark for Language Models''.
+
+<img src="assets/overall-performance.png" alt="drawing" width="700"/>
+
+## Supporting Task
+LexBench now supports the tasks shown as below.
+| Task                                   |  Abbr. | Eval Metrics            | Phrase Type   | Support Models | Status |
+|----------------------------------------|--------|-------------------------|---------------|----------------|--------|
+| Idiomatic Expression Detection         | IED    | Accuracy                | Idiomacity    | GPT, BERT      | ✅      |
+| Idiomatic Expression Extraction        | IEE    | Sequence-level Accuracy | Idiomacity    | GPT, BERT      | ✅      |
+| Idiomatic Expression Interpretation    | IEI    | Rouge-L, BertScore-F1   | Idiomacity    | GPT, T5        | ✅      |
+| Noun Compound Compositionality         | NCC    | Accuracy                | Noun Compound | GPT, BERT      | ✅      |
+| Noun Compound Extraction               | NCE    | Sequence-level Accuracy | Noun Compound | GPT, BERT      | ✅      |
+| Noun Compound Interpretation           | NCI    | Rouge-L, BertScore-F1   | Noun Compound | GPT, T5        | ✅      |
+| Lexical Collocation Categorization     | LCC    | Accuracy                | Collocation   | GPT, BERT      | ✅      |
+| Lexical Collocation Extraction         | LCE    | Sequence-level Accuracy | Collocation   | GPT, BERT      | ✅      |
+| Lexical Collocation Interpretation     | LCI    | Rouge-L, BertScore-F1   | Collocation   | GPT, T5        | ✅      |
+| Verbal Multiword Expression Extraction | VMWE   | Sequence-level Accuracy | Verbal MWE    | GPT, BERT      | ✅      |
+
+## Preparing Data
+```bash
+unzip resources/dataset.zip -d lexbench/
+```
 
 ## Preparing Environments
 ```bash
@@ -10,15 +32,12 @@ cd lexbench
 pip install -r requirements.txt
 ```
 
-## Preparing Data
-```bash
-unzip resources/dataset.zip -d lexbench/
-```
-
 ## Running Evaluation on Specific Task 
 For example, the command for running idiom interpretation with `Claude-3-opus` is shown below.
 
 ```bash
+# make sure the current directory is "LexBench/lexbench"
+
 python main.py \
   --task idiom-paraphrase \
   --api_key <Your API key> \
