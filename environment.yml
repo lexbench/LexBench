@@ -1,0 +1,3 @@
+name: lexbench
+channels:
+  - defaults
